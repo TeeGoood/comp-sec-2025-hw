@@ -1,0 +1,12 @@
+Question:
+
+You have to store a password in a database. Please explain your
+design/strategy for securely storing it.
+(Hints: Proper hash function, Salting, Cost factor, Database Security)
+
+Answer:
+
+- only store the hash of password and using Bcrypt algorithm as a hash function 
+- use random salt for each password so if hacker use ranbow table method they must have very large table
+- use reasonably high cost factor for hashing, reasonably mean considering trading it off with performance
+- encrypt the database 

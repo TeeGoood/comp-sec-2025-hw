@@ -1,0 +1,8 @@
+Question:
+
+If a given hash value is from a bcrypt algorithm, is it practical to do a
+brute-force attack?
+
+Answer:
+
+No, because it cost too much time since bcrypt is designed to be slow

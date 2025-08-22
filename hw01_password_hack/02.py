@@ -1,25 +1,13 @@
 import hashlib
-import time
-from typing import Callable
 import bcrypt
+import utils
 
-pwd = "1et-m3-c00k"
+pwd = b"1et-m3-c00k"
 
-def metric(algo: str, fn: Callable[[str], str]):
-    count = 0
-    start = time.time()
-    
-    while True:
-        duration = time.time() - start
-        if duration >= 1:
-           break
+def log(algo: str, count: float):
+    print(f"{algo}: {count} hash/s")    
 
-        count +=1
-        fn(pwd)
-    
-    print(f"{algo}: {count} hash/sec")
+log("MD-5", utils.metric(lambda : hashlib.md5(pwd).hexdigest()))
+log("SHA-1", utils.metric(lambda : hashlib.sha1(pwd).hexdigest()))
+log("bcrypt", utils.metric(lambda : bcrypt.hashpw(pwd, bcrypt.gensalt())))
 
-metric("MD5", lambda x: hashlib.md5(x.encode("utf-8")).hexdigest())
-metric("SHA-1", lambda x: hashlib.sha1(x.encode("utf-8")).hexdigest())
-metric("bcrypt", lambda x: bcrypt.hashpw(x.encode("utf-8"), bcrypt.gensalt()))
-    

@@ -1,0 +1,8 @@
+Question:
+
+If a given hash value is from a bcrypt algorithm, is it practical to perform a
+rainbow table attack?
+
+Answer:
+
+No, because the size of table will be too large and it will take too much resource to pre-compute all of possiblities
